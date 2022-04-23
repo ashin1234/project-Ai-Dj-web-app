@@ -9,6 +9,7 @@ leftWristY = 0;
 rightWristX = 0;
 rightWristY = 0;
 
+
 function preload() {
     song1 = loadSound("music.mp3");
     song2 = loadSound("music2.mp3"); 
@@ -46,6 +47,17 @@ function draw() {
     song2_status = song2.isPlaying();
     fill("#1C4AAD");
     stroke("#1C4AAD");
+    if(score_rightWrist > 0.2)
+    {
+        circle(rightWristX,rightWristY,20);
+        song2.stop();
+        if(song1_status == false)
+        {
+            song1.play();
+            document.getElementById("song").innerHTML = "Harry Potter Theme Song";
+        }
+
+    }   
     if(score_leftWrist > 0.2)
     {
         circle(leftWristX,leftWristY,20);
@@ -53,7 +65,7 @@ function draw() {
         if(song2_status == false)
         {
             song2.play();
-            document.getElementById(song).innerHTML = "Peter Pan Song";
+            document.getElementById("song").innerHTML = "Peter Pan Song";
         }
     }
 }
